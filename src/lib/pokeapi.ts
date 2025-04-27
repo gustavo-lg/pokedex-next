@@ -17,6 +17,11 @@ const api = {
   async getPokemonByName(name: string) {
     await delay(2500); // 1.5 segundos de delay
     return baseApi.getPokemonByName(name);
+  },
+
+  async getPokemonSpeciesByName(name: string) {
+    await delay(0); // 1.5 segundos de delay
+    return baseApi.getPokemonSpeciesByName(name);
   }
 };
 

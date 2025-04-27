@@ -1,78 +1,275 @@
 .detailContainer {
-    padding: 20px;
-  }
-  
-  .backLink {
-    color: #0066cc;
-    text-decoration: none;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .backLink:hover {
-    text-decoration: underline;
-  }
-  
-  .pokemonDetail {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
+  padding: 20px;
+}
+
+.backLink {
+  color: #0066cc;
+  text-decoration: none;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+/* Cores para tipos de Pokémon */
+.typeNormal {
+  background-color: #c6c6a7;
+}
+
+.typeFire {
+  background-color: #f5ac78;
+}
+
+.typeWater {
+  background-color: #9db7f5;
+}
+
+.typeElectric {
+  background-color: #fae078;
+}
+
+.typeGrass {
+  background-color: #a7db8d;
+}
+
+.typeIce {
+  background-color: #bce6e6;
+}
+
+.typeFighting {
+  background-color: #d67873;
+}
+
+.typePoison {
+  background-color: #c183c1;
+}
+
+.typeGround {
+  background-color: #ebd69d;
+}
+
+.typeFlying {
+  background-color: #c6b7f5;
+}
+
+.typePsychic {
+  background-color: #fa92b2;
+}
+
+.typeBug {
+  background-color: #c6d16e;
+}
+
+.typeRock {
+  background-color: #d1c17d;
+}
+
+.typeGhost {
+  background-color: #a292bc;
+}
+
+.typeDragon {
+  background-color: #a27dfa;
+}
+
+.typeDark {
+  background-color: #a29288;
+}
+
+.typeSteel {
+  background-color: #d1d1e0;
+}
+
+.typeFairy {
+  background-color: #f4bdc9;
+}
+
+/* Cores para tipos de Pokémon (badge) */
+.typeNormalBadge {
+  background-color: #e0e0c2;
+}
+
+.typeFireBadge {
+  background-color: #ffc9a1;
+}
+
+.typeWaterBadge {
+  background-color: #c2d7ff;
+}
+
+.typeElectricBadge {
+  background-color: #fff0a8;
+}
+
+.typeGrassBadge {
+  background-color: #c7e8b5;
+}
+
+.typeIceBadge {
+  background-color: #d6f3f3;
+}
+
+.typeFightingBadge {
+  background-color: #e8a8a3;
+}
+
+.typePoisonBadge {
+  background-color: #d9a3d9;
+}
+
+.typeGroundBadge {
+  background-color: #f5e8c2;
+}
+
+.typeFlyingBadge {
+  background-color: #dbc7ff;
+}
+
+.typePsychicBadge {
+  background-color: #ffb7d1;
+}
+
+.typeBugBadge {
+  background-color: #d9e393;
+}
+
+.typeRockBadge {
+  background-color: #e5d9a8;
+}
+
+.typeGhostBadge {
+  background-color: #c2b3d9;
+}
+
+.typeDragonBadge {
+  background-color: #c7a8ff;
+}
+
+.typeDarkBadge {
+  background-color: #c2b3a8;
+}
+
+.typeSteelBadge {
+  background-color: #e5e5f0;
+}
+
+.typeFairyBadge {
+  background-color: #ffd6e0;
+}
+
+.pokemonDetail {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.detailLayout {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
   .detailLayout {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: row;
   }
-  
-  @media (min-width: 768px) {
-    .detailLayout {
-      flex-direction: row;
-    }
+}
+
+.imageColumn {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.imageColumn img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: contain;
+  z-index: 1;
+  position: relative;
+}
+
+.imageColumn::before {
+  content: "";
+  background-image: url("/images/pokeballBackground.png");
+  background-size: 75%; /* Reduz o tamanho da imagem */
+  background-repeat: no-repeat;
+  background-position: center; /* Posiciona no canto inferior direito */
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+  margin: 10px; /* Adiciona uma margem interna */
+}
+
+.infoColumn {
+  flex: 1;
+}
+
+.pokemonTitle {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.typesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: nowrap;
+  width: fit-content;
+}
+
+.typeBadge {
+  padding: 5px 15px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+  text-transform: capitalize;
+}
+
+.tabTitle  button{
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .tabTitle  button{
+    font-size: 12px;
+    padding: 0 5px;
   }
-  
-  .imageColumn {
-    flex: 1;
-  }
-  
-  .imageColumn img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: contain;
-  }
-  
-  .infoColumn {
-    flex: 1;
-  }
-  
-  .pokemonTitle {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    text-transform: capitalize;
-  }
-  
-  .statsGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .statsGrid h3 {
-    font-size: 1rem;
-    margin-bottom: 5px;
-  }
-  
-  .statsGrid ul {
-    margin: 0;
-    padding-left: 20px;
-  }
-  
-  .statsGrid li {
-    margin-bottom: 3px;
-    text-transform: capitalize;
-  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.statsGrid h3 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.statsGrid ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.statsGrid li {
+  margin-bottom: 3px;
+  text-transform: capitalize;
+}
