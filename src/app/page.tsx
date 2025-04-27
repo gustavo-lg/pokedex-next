@@ -19,7 +19,14 @@ export default async function Home() {
             key={pokemon.name}
             fallback={
               <Box className={styles.pokemonCard}>
-                <Stack spacing={2} maxWidth="224px" height="120px" p="15px" border="1px solid #eee" borderRadius="12px">
+                <Stack
+                  spacing={2}
+                  maxWidth="224px"
+                  height="110px"
+                  p="15px"
+                  border="1px solid #eee"
+                  borderRadius="12px"
+                >
                   <Skeleton
                     sx={{ borderRadius: "12px", bgcolor: "#999" }}
                     variant="rectangular"
@@ -27,8 +34,13 @@ export default async function Home() {
                     height={22}
                     animation="pulse"
                   />
-                  <Stack direction="row" spacing={2} alignItems="center" sx={{justifyContent:"space-between"}}>
-                    <Stack  spacing={2} alignItems="center">
+                  <Stack
+                    direction="row"
+                    spacing={2}
+                    alignItems="center"
+                    sx={{ justifyContent: "space-between" }}
+                  >
+                    <Stack spacing={2} alignItems="center">
                       <Skeleton
                         sx={{ borderRadius: "12px", bgcolor: "#999" }}
                         variant="rectangular"
@@ -45,10 +57,12 @@ export default async function Home() {
                       />
                     </Stack>
                     <Skeleton
-                      sx={{ bgcolor: "#999" }}
+                      sx={{
+                        bgcolor: "#999",
+                        width: { xs: 30, sm: 50 },
+                        height: { xs: 30, sm: 50 },
+                      }}
                       variant="circular"
-                      width={50}
-                      height={50}
                       animation="pulse"
                     />
                   </Stack>

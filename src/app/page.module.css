@@ -12,159 +12,174 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  place-items: center;
+}
+
+@media (max-width: 600px) {
+  .pokemonGrid {
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Cores para tipos de Pokémon (versão mais clara) */
 .typeNormal {
-  background-color: #C6C6A7;
+  background-color: #c6c6a7;
 }
 
 .typeFire {
-  background-color: #F5AC78;
+  background-color: #f5ac78;
 }
 
 .typeWater {
-  background-color: #9DB7F5;
+  background-color: #9db7f5;
 }
 
 .typeElectric {
-  background-color: #FAE078;
+  background-color: #fae078;
 }
 
 .typeGrass {
-  background-color: #A7DB8D;
+  background-color: #a7db8d;
 }
 
 .typeIce {
-  background-color: #BCE6E6;
+  background-color: #bce6e6;
 }
 
 .typeFighting {
-  background-color: #D67873;
+  background-color: #d67873;
 }
 
 .typePoison {
-  background-color: #C183C1;
+  background-color: #c183c1;
 }
 
 .typeGround {
-  background-color: #EBD69D;
+  background-color: #ebd69d;
 }
 
 .typeFlying {
-  background-color: #C6B7F5;
+  background-color: #c6b7f5;
 }
 
 .typePsychic {
-  background-color: #FA92B2;
+  background-color: #fa92b2;
 }
 
 .typeBug {
-  background-color: #C6D16E;
+  background-color: #c6d16e;
 }
 
 .typeRock {
-  background-color: #D1C17D;
+  background-color: #d1c17d;
 }
 
 .typeGhost {
-  background-color: #A292BC;
+  background-color: #a292bc;
 }
 
 .typeDragon {
-  background-color: #A27DFA;
+  background-color: #a27dfa;
 }
 
 .typeDark {
-  background-color: #A29288;
+  background-color: #a29288;
 }
 
 .typeSteel {
-  background-color: #D1D1E0;
+  background-color: #d1d1e0;
 }
 
 .typeFairy {
-  background-color: #F4BDC9;
+  background-color: #f4bdc9;
 }
 
 /* Cores para tipos de Pokémon (badge) */
 .typeNormalBadge {
-  background-color: #E0E0C2;
+  background-color: #e0e0c2;
 }
 
 .typeFireBadge {
-  background-color: #FFC9A1;
+  background-color: #ffc9a1;
 }
 
 .typeWaterBadge {
-  background-color: #C2D7FF;
+  background-color: #c2d7ff;
 }
 
 .typeElectricBadge {
-  background-color: #FFF0A8;
+  background-color: #fff0a8;
 }
 
 .typeGrassBadge {
-  background-color: #C7E8B5;
+  background-color: #c7e8b5;
 }
 
 .typeIceBadge {
-  background-color: #D6F3F3;
+  background-color: #d6f3f3;
 }
 
 .typeFightingBadge {
-  background-color: #E8A8A3;
+  background-color: #e8a8a3;
 }
 
 .typePoisonBadge {
-  background-color: #D9A3D9;
+  background-color: #d9a3d9;
 }
 
 .typeGroundBadge {
-  background-color: #F5E8C2;
+  background-color: #f5e8c2;
 }
 
 .typeFlyingBadge {
-  background-color: #DBC7FF;
+  background-color: #dbc7ff;
 }
 
 .typePsychicBadge {
-  background-color: #FFB7D1;
+  background-color: #ffb7d1;
 }
 
 .typeBugBadge {
-  background-color: #D9E393;
+  background-color: #d9e393;
 }
 
 .typeRockBadge {
-  background-color: #E5D9A8;
+  background-color: #e5d9a8;
 }
 
 .typeGhostBadge {
-  background-color: #C2B3D9;
+  background-color: #c2b3d9;
 }
 
 .typeDragonBadge {
-  background-color: #C7A8FF;
+  background-color: #c7a8ff;
 }
 
 .typeDarkBadge {
-  background-color: #C2B3A8;
+  background-color: #c2b3a8;
 }
 
 .typeSteelBadge {
-  background-color: #E5E5F0;
+  background-color: #e5e5f0;
 }
 
 .typeFairyBadge {
-  background-color: #FFD6E0;
+  background-color: #ffd6e0;
 }
 
 .pokemonCard {
   text-decoration: none;
   color: inherit;
-  margin: 5px 0;
+  width: -webkit-fill-available;
 }
+
+@media (max-width: 600px) {
+  .pokemonCard {
+    max-width: 162px;
+  }
+}
+
 
 .cardContent {
   position: relative;
@@ -177,11 +192,12 @@
   align-items: center;
   overflow: hidden;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  min-height: 130px;
 }
 
 .cardContent::before {
-  content: '';
-  background-image: url('/images/pokeballBackground.png');
+  content: "";
+  background-image: url("/images/pokeballBackground.png");
   background-size: 60%; /* Reduz o tamanho da imagem */
   background-repeat: no-repeat;
   background-position: right; /* Posiciona no canto inferior direito */
@@ -231,6 +247,15 @@
   object-fit: contain;
 }
 
+@media (max-width: 600px) {
+  .pokemonImage {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: 25px;
+  }
+}
+
 .pokemonName {
   font-size: 1.2rem;
   text-align: center;
@@ -244,6 +269,7 @@
   justify-content: center;
   gap: 10px;
   flex-direction: column;
+  width: fit-content;
 }
 
 .typeBadge {

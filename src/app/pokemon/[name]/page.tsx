@@ -2,7 +2,6 @@ import api from '@/lib/pokeapi';
 import Link from 'next/link';
 import styles from './page.module.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Button } from '@mui/material';
 
 export default async function PokemonDetail({
     params,
@@ -10,6 +9,7 @@ export default async function PokemonDetail({
     params: { name: string };
 }) {
     const pokemon = await api.getPokemonByName(params.name);
+    console.log(pokemon);
 
     return (
         <main className={styles.detailContainer}>

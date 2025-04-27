@@ -1,6 +1,7 @@
-import Link from 'next/link';
-import api from '@/lib/pokeapi';
-import styles from './page.module.css';
+import Link from "next/link";
+import api from "@/lib/pokeapi";
+import styles from "./page.module.css";
+import Image from 'next/image';
 
 interface PokemonCardProps {
   name: string;
@@ -8,17 +9,23 @@ interface PokemonCardProps {
 
 export default async function PokemonCard({ name }: PokemonCardProps) {
   const pokemon = await api.getPokemonByName(name);
-  const typeClass = `type${pokemon.types[0].type.name.charAt(0).toUpperCase()}${pokemon.types[0].type.name.slice(1)}`;
+  const typeClass = `type${pokemon.types[0].type.name
+    .charAt(0)
+    .toUpperCase()}${pokemon.types[0].type.name.slice(1)}`;
 
   return (
     <Link href={`/pokemon/${name}`} className={styles.pokemonCard}>
-      <div className={`${styles.cardContent} ${styles.typeBadge} ${styles[typeClass]}`}>
+      <div
+        className={`${styles.cardContent} ${styles.typeBadge} ${styles[typeClass]}`}
+      >
         <div className={styles.row}>
           <div className={styles.col}>
             <h2 className={styles.pokemonName}>{name}</h2>
             <div className={styles.typesContainer}>
               {pokemon.types.map((type: any) => {
-                const typeClass = `type${type.type.name.charAt(0).toUpperCase()}${type.type.name.slice(1)}`;
+                const typeClass = `type${type.type.name
+                  .charAt(0)
+                  .toUpperCase()}${type.type.name.slice(1)}`;
                 return (
                   <span
                     key={type.type.name}
@@ -32,9 +39,11 @@ export default async function PokemonCard({ name }: PokemonCardProps) {
           </div>
           <div className={styles.col}>
             <div className={styles.imageContainer}>
-              <img
-                src={pokemon.sprites.front_default || ''}
+              <Image
+                src={pokemon.sprites.front_default || ""} // coloca um fallback seguro
                 alt={name}
+                width={100} // defina a largura
+                height={100} // defina a altura
                 className={styles.pokemonImage}
               />
             </div>
