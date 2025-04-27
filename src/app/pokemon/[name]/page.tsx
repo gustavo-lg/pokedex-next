@@ -13,10 +13,9 @@ export default async function PokemonDetail({
   const typeClass = `type${pokemon.types[0].type.name
     .charAt(0)
     .toUpperCase()}${pokemon.types[0].type.name.slice(1)}`;
-  console.log(pokemon);
 
   const species = await api.getPokemonSpeciesByName(params.name);
-  const evolutionChainUrl = species.evolution_chain.url;
+  const evolutionChainUrl = species?.evolution_chain?.url;
   const evolutionChain = await fetch(evolutionChainUrl).then((res) =>
     res.json()
   );
@@ -33,6 +32,11 @@ export default async function PokemonDetail({
   }
 
   const evolutions = extractEvolutionChain(evolutionChain.chain);
+  const habitat = species?.habitat?.name;
+  const color = species?.color?.name;
+  const shape = species?.shape?.name;
+
+  console.log(species);
 
   return (
     <main className={styles.detailContainer}>
@@ -78,6 +82,9 @@ export default async function PokemonDetail({
               abilities={pokemon.abilities}
               stats={pokemon.stats}
               evolutions={evolutions}
+              habitat={habitat}
+              color={color}
+              shape={shape}
             />
           </div>
         </div>

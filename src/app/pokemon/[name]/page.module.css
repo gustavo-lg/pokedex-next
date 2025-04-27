@@ -188,6 +188,12 @@
   overflow: hidden;
 }
 
+@media (min-width: 768px) {
+  .imageColumn {
+    padding-right: 0;
+  }
+}
+
 .imageColumn img {
   width: 100%;
   max-height: 300px;
