@@ -163,7 +163,7 @@
 .pokemonCard {
   text-decoration: none;
   color: inherit;
-  margin: 15px 0;
+  margin: 5px 0;
 }
 
 .cardContent {
@@ -176,6 +176,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .cardContent::before {
@@ -197,6 +198,7 @@
 
 .cardContent:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
 }
 
 .row {

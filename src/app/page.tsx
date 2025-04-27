@@ -1,9 +1,10 @@
-import api from '@/lib/pokeapi';
-import Link from 'next/link';
-import styles from './page.module.css';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-
+import api from "@/lib/pokeapi";
+import PokemonCards from "./PokemonCards";
+import styles from "./page.module.css";
+import { Suspense } from "react";
+import Skeleton from "@mui/material/Skeleton";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 export default async function Home() {
   const pokemonList = await api.listPokemons(0, 20);
@@ -14,50 +15,51 @@ export default async function Home() {
 
       <div className={styles.pokemonGrid}>
         {pokemonList.results.map((pokemon) => (
-          <PokemonCard key={pokemon.name} name={pokemon.name} />
+          <Suspense
+            key={pokemon.name}
+            fallback={
+              <Box className={styles.pokemonCard}>
+                <Stack spacing={2} maxWidth="224px" height="120px" p="15px" border="1px solid #eee" borderRadius="12px">
+                  <Skeleton
+                    sx={{ borderRadius: "12px", bgcolor: "#999" }}
+                    variant="rectangular"
+                    width="80%"
+                    height={22}
+                    animation="pulse"
+                  />
+                  <Stack direction="row" spacing={2} alignItems="center" sx={{justifyContent:"space-between"}}>
+                    <Stack  spacing={2} alignItems="center">
+                      <Skeleton
+                        sx={{ borderRadius: "12px", bgcolor: "#999" }}
+                        variant="rectangular"
+                        width="85px"
+                        height={25}
+                        animation="pulse"
+                      />
+                      <Skeleton
+                        sx={{ borderRadius: "12px", bgcolor: "#999" }}
+                        variant="rectangular"
+                        width="85px"
+                        height={25}
+                        animation="pulse"
+                      />
+                    </Stack>
+                    <Skeleton
+                      sx={{ bgcolor: "#999" }}
+                      variant="circular"
+                      width={50}
+                      height={50}
+                      animation="pulse"
+                    />
+                  </Stack>
+                </Stack>
+              </Box>
+            }
+          >
+            <PokemonCards name={pokemon.name} />
+          </Suspense>
         ))}
       </div>
     </main>
-  );
-}
-
-async function PokemonCard({ name }: { name: string }) {
-  const pokemon = await api.getPokemonByName(name);
-  const typeClass = `type${pokemon.types[0].type.name.charAt(0).toUpperCase()}${pokemon.types[0].type.name.slice(1)}`;
-
-  return (
-    <Link href={`/pokemon/${name}`} className={styles.pokemonCard}>
-      <div className={`${styles.cardContent} ${styles.typeBadge} ${styles[typeClass]}`}>
-        <div className={styles.row}>
-          <div className={styles.col}>
-            <h2 className={styles.pokemonName}>
-              {name}
-            </h2>
-            <div className={styles.typesContainer}>
-              {pokemon.types.map((type) => {
-                const typeClass = `type${type.type.name.charAt(0).toUpperCase()}${type.type.name.slice(1)}`;
-                return (
-                  <span
-                    key={type.type.name}
-                    className={`${styles.typeBadge} ${styles[typeClass]}Badge`}
-                  >
-                    {type.type.name}
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-          <div className={styles.col}>
-            <div className={styles.imageContainer}>
-              <img
-                src={pokemon.sprites.front_default || ''}
-                alt={name}
-                className={styles.pokemonImage}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </Link >
   );
 }
