@@ -10,17 +10,15 @@ async function delay(ms: number) {
 // Agora criamos um "wrapper" do api
 const api = {
   async listPokemons(offset: number, limit: number) {
-    await delay(2500); // 1.5 segundos de delay
+    await delay(2000); // 1.5 segundos de delay
     return baseApi.listPokemons(offset, limit);
   },
 
   async getPokemonByName(name: string) {
-    await delay(2500); // 1.5 segundos de delay
     return baseApi.getPokemonByName(name);
   },
 
   async getPokemonSpeciesByName(name: string) {
-    await delay(0); // 1.5 segundos de delay
     return baseApi.getPokemonSpeciesByName(name);
   }
 };
