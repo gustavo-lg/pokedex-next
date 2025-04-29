@@ -19,8 +19,22 @@ interface PokemonType {
   };
 }
 
+interface Pokemon {
+  id: number;
+  name: string;
+  types: { type: { name: string } }[];
+  sprites: {
+    front_default: string | null;
+    other?: {
+      ["official-artwork"]?: {
+        front_default: string | null;
+      };
+    };
+  };
+}
+
 export default function PokemonCard({ name }: PokemonCardProps) {
-  const [pokemon, setPokemon] = useState<any>(null);
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

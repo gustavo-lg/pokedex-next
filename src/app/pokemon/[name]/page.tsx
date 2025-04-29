@@ -8,6 +8,13 @@ type PokemonDetailProps = {
   params: { name: string };
 };
 
+interface EvolutionChainLink {
+  species: {
+    name: string;
+  };
+  evolves_to: EvolutionChainLink[];
+}
+
 // Função assíncrona que executa SSR e retorna os dados prontos
 async function getPokemonData(name: string) {
   const pokemon = await api.getPokemonByName(name);
@@ -16,7 +23,7 @@ async function getPokemonData(name: string) {
   const evolutionChain = await fetch(evolutionChainUrl).then((res) => res.json());
 
   // Função para extrair a cadeia de evolução
-  function extractEvolutionChain(chain: any): string[] {
+  function extractEvolutionChain(chain: EvolutionChainLink): string[] {
     const evolutions: string[] = [];
     let current = chain;
     while (current) {
