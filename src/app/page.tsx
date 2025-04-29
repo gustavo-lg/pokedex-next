@@ -2,6 +2,7 @@ import api from "@/lib/pokeapi";
 import PokemonCards from "./PokemonCards";
 import styles from "./page.module.css";
 import PokemonPagination from "./PokemonPagination";
+import PokemonSearch from "./PokemonSearch";
 
 interface HomeProps {
   searchParams: {
@@ -20,7 +21,7 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className={styles.pokedexContainer}>
       <h1 className={styles.title}>Pokédex</h1>
-
+      <PokemonSearch />
       <div className={styles.pokemonGrid}>
         {pokemonList.results.map((pokemon, index) => (
           <PokemonCards key={index} name={pokemon.name} />
