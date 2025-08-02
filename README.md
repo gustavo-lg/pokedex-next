@@ -44,22 +44,17 @@ Editar
 ├── package.json
 ├── tsconfig.json
 └── next.config.ts
-🧪 Como Rodar Localmente
-Clone o repositório:
 
-Copiar
-Editar
+🧪 Como Rodar Localmente
+
+Clone o repositório: 
 git clone https://github.com/seu-usuario/pokedex-next.git
 cd pokedex-next
+
 Instale as dependências:
-
-Copiar
-Editar
 npm install
-Execute o projeto:
 
-bash
-Copiar
-Editar
+Execute o projeto:
 npm run dev
+
 Acesse http://localhost:3000 no seu navegador.
