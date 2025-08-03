@@ -4,10 +4,6 @@ import styles from "./page.module.css";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PokemonInfo from "./PokemonInfo";
 
-type PokemonDetailProps = {
-  params: { name: string };
-};
-
 interface EvolutionChainLink {
   species: {
     name: string;
@@ -41,7 +37,11 @@ async function getPokemonData(name: string) {
   return { pokemon, evolutions, habitat, color, shape };
 }
 
-export default async function PokemonDetail({ params }: PokemonDetailProps) {
+export default async function PokemonDetail({
+  params,
+}: {
+  params: { name: string };
+}) {
   const { pokemon, evolutions, habitat, color, shape } = await getPokemonData(params.name);
 
   return (
@@ -50,20 +50,20 @@ export default async function PokemonDetail({ params }: PokemonDetailProps) {
         <ArrowBackIcon sx={{ color: "#111" }} />
       </Link>
 
-        <PokemonInfo
-          name={pokemon.name}
-          height={pokemon.height}
-          weight={pokemon.weight}
-          moves={pokemon.moves}
-          abilities={pokemon.abilities}
-          stats={pokemon.stats}
-          evolutions={evolutions}
-          habitat={habitat}
-          color={color}
-          shape={shape}
-          sprites={pokemon.sprites}
-          types={pokemon.types}
-        />
+      <PokemonInfo
+        name={pokemon.name}
+        height={pokemon.height}
+        weight={pokemon.weight}
+        moves={pokemon.moves}
+        abilities={pokemon.abilities}
+        stats={pokemon.stats}
+        evolutions={evolutions}
+        habitat={habitat}
+        color={color}
+        shape={shape}
+        sprites={pokemon.sprites}
+        types={pokemon.types}
+      />
     </main>
   );
 }
