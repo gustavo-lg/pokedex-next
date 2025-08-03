@@ -4,13 +4,11 @@ import styles from "./page.module.css";
 import PokemonPagination from "./PokemonPagination";
 import PokemonSearch from "./PokemonSearch";
 
-interface HomeProps {
-  searchParams?: {
-    page?: string;
-  };
-}
-
-export default async function Home({ searchParams }: HomeProps) {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { page?: string };
+}) {
   const currentPage = Number(searchParams?.page) || 1;
   const limit = 20;
   const offset = (currentPage - 1) * limit;
@@ -27,7 +25,6 @@ export default async function Home({ searchParams }: HomeProps) {
           <PokemonCards key={index} name={pokemon.name} />
         ))}
       </div>
-
       <PokemonPagination totalPages={totalPages} currentPage={currentPage} />
     </main>
   );
