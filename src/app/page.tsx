@@ -5,13 +5,13 @@ import PokemonPagination from "./PokemonPagination";
 import PokemonSearch from "./PokemonSearch";
 
 interface HomeProps {
-  searchParams: {
+  searchParams?: {
     page?: string;
   };
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const currentPage = Number(searchParams.page) || 1;
+  const currentPage = Number(searchParams?.page) || 1;
   const limit = 20;
   const offset = (currentPage - 1) * limit;
 
