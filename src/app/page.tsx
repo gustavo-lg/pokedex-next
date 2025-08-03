@@ -7,12 +7,9 @@ import PokemonSearch from "./PokemonSearch";
 export default async function Home({
   searchParams,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: { page?: string };
 }) {
-  const currentPage = Number(
-    typeof searchParams?.page === "string" ? searchParams.page : 1
-  ) || 1;
-
+  const currentPage = Number(searchParams?.page ?? 1);
   const limit = 20;
   const offset = (currentPage - 1) * limit;
 
