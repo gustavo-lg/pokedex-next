@@ -37,12 +37,16 @@ async function getPokemonData(name: string) {
   return { pokemon, evolutions, habitat, color, shape };
 }
 
+// A correção está aqui:
 export default async function PokemonDetail({
   params,
 }: {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 }) {
-  const { pokemon, evolutions, habitat, color, shape } = await getPokemonData(params.name);
+  const resolvedParams = await params;
+  const { pokemon, evolutions, habitat, color, shape } = await getPokemonData(
+    resolvedParams.name
+  );
 
   return (
     <main className={styles.detailContainer}>
